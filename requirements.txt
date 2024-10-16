@@ -1,0 +1,7 @@
+streamlit
+pandas
+yfinance
+numpy
+plotly.express
+statsmodels
+prophet
