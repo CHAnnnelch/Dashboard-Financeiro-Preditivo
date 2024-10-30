@@ -13,7 +13,7 @@ start_date = st.sidebar.date_input("Data Inicial")
 end_date = st.sidebar.date_input("Data Final")
 
 data = yf.download(ticker,start=start_date,end=end_date)
-st.write(str(data.columns))
+data.columns = data.columns.droplevel("Ticker")
 data.to_csv('pred_preco.csv')
 data = pd.read_csv('pred_preco.csv')
 data['Date'] = pd.to_datetime(data['Date'])
