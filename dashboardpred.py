@@ -11,6 +11,13 @@ st.title("Dashboard Financeiro Preditivo")
 ticker = st.sidebar.text_input("Ticker")
 start_date = st.sidebar.date_input("Data Inicial")
 end_date = st.sidebar.date_input("Data Final")
+data['Date'] = pd.to_datetime(data['Date'])
+
+data["Date"] = [
+    datetime.datetime.strptime(
+        str(target_date).split(" ")[0], '%Y-%m-%d').date()
+        for target_date in data["Date"]
+]
 
 data = yf.download(ticker,start=start_date,end=end_date)
 data.to_csv('pred_preco.csv')
