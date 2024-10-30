@@ -15,13 +15,7 @@ end_date = st.sidebar.date_input("Data Final")
 data = yf.download(ticker,start=start_date,end=end_date)
 data.to_csv('pred_preco.csv')
 data = pd.read_csv('pred_preco.csv')
-data['Date'] = pd.to_datetime(data['Date'])
 
-data["Date"] = [
-    datetime.datetime.strptime(
-        str(target_date).split(" ")[0], '%Y-%m-%d').date()
-        for target_date in data["Date"]
-]
 fig1 = px.line(data, x = data['Date'], y = data['Adj Close'], title=ticker)
 st.plotly_chart(fig1)
 
