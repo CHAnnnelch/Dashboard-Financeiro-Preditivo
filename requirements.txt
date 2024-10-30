@@ -1,6 +1,6 @@
-streamlit
+streamlit=1.39.0
 pandas
-yfinance
+yfinance==0.2.48
 numpy
 plotly.express
 statsmodels
